@@ -54,10 +54,8 @@
                         <div class="row d-flex justify-content-between align-items-center">
                             <div class="header-info-left">
                                 <ul>
-                                    <li><img src="/static/assets/img/icon/header_icon1.png" alt="">34ºc, Sunny</li>
-                                    <li><img src="/static/assets/img/icon/header_icon1.png" alt="">Tuesday, 18th June,
-                                        2019
-                                    </li>
+                                    <li><img src="/static/assets/img/icon/header_icon1.png" alt=""><span id="weather">34ºc, Sunny</span></li>
+                                    <li><img src="/static/assets/img/icon/header_icon1.png" alt=""><span id="datetime"></span></li>
                                 </ul>
                             </div>
                             <div class="header-info-right">
@@ -1079,6 +1077,36 @@
             },
         });
     });
+</script>
+
+<script>
+    function updateDateTime() {
+        const now = new Date();
+
+        // Format options
+        const options = {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        };
+
+        // Format the date and time
+        const formattedDate = now.toLocaleDateString('en-US', options);
+        const formattedTime = now.toLocaleTimeString('en-US', {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        });
+
+        // Update the content
+        document.getElementById('datetime').innerHTML = `${formattedDate}, ${formattedTime}`;
+    }
+
+    // Update every second
+    setInterval(updateDateTime, 1000);
+    // Initial call
+    updateDateTime();
 </script>
 {% block js %}
 {% endblock js %}
