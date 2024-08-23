@@ -5,7 +5,7 @@ Detail | Post Detail Page
 
 {% block mestas %}
 <meta property="og:title" content="{{news.title}}">
-<meta property="og:description" content="{{ news.text|truncatewords:30 }}">
+<meta property="og:description" content="{{ news.desc|truncatewords:30 }}">
 <meta property="og:image" content="{{ absolute_image_url }}">
 <meta property="og:url" content="{{ request.build_absolute_uri }}">
 
@@ -44,7 +44,7 @@ Detail | Post Detail Page
 
             <div class="about-prea mt-3">
                 <i class="fa fa-eye" style="font-size:16px">&nbsp;{{news.count}}</i>
-                <p class="about-pera1 mb-25">{{news.text}}</p>
+                <p class="about-pera1 mb-25">{{news.desc}}</p>
             </div>
             <!-- WhatsApp Share Link -->
             <div class="share-links">
